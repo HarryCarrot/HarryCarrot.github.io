@@ -88,7 +88,7 @@
 <p>如果想要使用别的博客搭建方法或自己编写博客网页的话，可以参照<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>中的说明，将仓库拉取到本地，然后自由搭建。 但本文所使用的Hexo搭建方法只要求做完上述一步就ok了。</p>
 <h3 id="安装及部署Hexo"><a href="#安装及部署Hexo" class="headerlink" title="安装及部署Hexo"></a>安装及部署Hexo</h3><p>在你的电脑上随便找一个地方大一点的地方，新建一个文件夹命个名，作为博客本地存储位置。例如本人的博客选址选在F:&#x2F;&#x2F;MyBlog.<br>打开WebStorm，在下方的终端框内，定位到该地址。<code>cd F://Myblog</code></p>
 <p>然后使用Node.js的包管理器npm安装Hexo。输入<code>npm install hexo-cli -g</code>开始安装。装好后，在终端输入<code>hexo -v</code>，若出现一堆版本号，则安装成功。</p>
-<p>接着输入<code>hexo init</code>，创建博客文件夹。输入前一定要保证当前地址所在文件夹为空，否则会报错。创建完成后，当前文件夹内会出现node_modules&#x2F;source&#x2F;themes等许多文件夹。</p>
+<p>接着输入<code>hexo init</code>，创建博客文件夹。输入前一定要保证当前地址所在文件夹为空，否则会报错。创建完成后，当前文件夹内会出现node_modules&#x2F;source&#x2F;themes等许多文件夹。各文件夹含义及作用可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup%E3%80%82">https://hexo.io/zh-cn/docs/setup。</a></p>
 <p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/12.png" alt="博客文件夹创建"></p>
 <p>接着输入<code>npm install</code>，安装相关组件；输入<code>hexo server</code>，启动博客服务。点击弹出的链接(<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> )，如一切正常，则应显示以下页面，表明博客创建成功！</p>
 <p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/13.png" alt="博客初始页面"></p>
@@ -105,6 +105,8 @@
 <p>通过上述方式创建的博客在浏览器端直接可见。如果想创建草稿，可输入<code>hexo new draft &quot;Filename&quot;</code>，之后再将其发布。此外还有多种创建方式，详情可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing.html">https://hexo.io/zh-cn/docs/writing.html</a></p>
 <p>所有的博客都将以MarkDown格式书写，可在编辑器内直接编写博客。MarkDown的具体书写方式可参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/806d856cbd4e%E3%80%82">https://www.jianshu.com/p/806d856cbd4e。</a></p>
 <p>另外，Hexo还支持在MarkDown内对文章分类、添加标签等。详情可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">https://hexo.io/zh-cn/docs/front-matter</a></p>
+<p>经过尝试，若想在博客的MarkDown中插入图片，图片链接只能使用网络链接。本地的链接在被推送到Github Pages之后会地址丢失。本人将图片存储在Github仓库内，使用时调取图片网络地址。最后提一句，仓库文件夹命名最好用英文，用中文会像下面一样很难受：</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/16.png"></p>
 <p>博客编写好后，可运行<code>hexo server</code>先在本地预览。确认无误后，<code>hexo g</code>+<code>hexo d</code>将其推送到Github Pages上。</p>
 <h3 id="博客主题的更换"><a href="#博客主题的更换" class="headerlink" title="博客主题的更换"></a>博客主题的更换</h3><p>Hexo官网上有许多美观的主题（<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> ），不同的主题应用方式不大一样，具体应用方式应点开对应主题，查看其作者书写的说明文档。</p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>当然，由于本方法搭建的博客使用的服务为Github Pages，其服务器在国外，故在不能科学上网的情况下访问速度较慢。后续可能会尝试解决这个问题。</p>
