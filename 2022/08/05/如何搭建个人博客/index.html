@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            标签
+            如何搭建个人博客
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -31,15 +31,38 @@
 <meta name="generator" content="Hexo 6.2.0"></head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/page.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">标签</h1>
+                <h1 class="header-subtitle">如何搭建个人博客</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2022-08-05
+                        </span>
+                        
+                            <span id="/2022/08/05/如何搭建个人博客/" class="leancloud_visitors" data-flag-title="如何搭建个人博客">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2022/08/05/如何搭建个人博客/"></span>
+                        </span>  
+                    </p>
+                    
+                        
+                            <span class="category-color">经验方法</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">前端</span>
+                        
+                            <span class="tag-color">博客</span>
+                        
+                    
                 </div>
             
         </div>
@@ -48,22 +71,101 @@
 </div>
 <div id="container">
     
-        <!-- 独立页面 -->
-        
-            <div class="tags">
-                <div class="tags-title">
-                    目前共计 5 个标签
-                </div>
-                <div class="tags-content">
-                    <div class="tags-light">
-                        <a href="/tag/SAR/" style="font-size: 12px; color: #ccc">SAR</a> <a href="/tag/%E5%89%8D%E7%AB%AF/" style="font-size: 12px; color: #ccc">前端</a> <a href="/tag/%E5%8D%9A%E5%AE%A2/" style="font-size: 12px; color: #ccc">博客</a> <a href="/tag/%E7%A7%91%E6%99%AE/" style="font-size: 12px; color: #ccc">科普</a> <a href="/tag/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" style="font-size: 12px; color: #ccc">高分卫星</a>
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <p>本文提供的博客搭建方法基于Github Pages与Hexo，无需服务器、域名注册、无后端，适合免费白嫖党使用。</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><ul>
+<li>一台windows电脑</li>
+<li>一个github账号</li>
+<li>一个前端代码编辑器（WebStorm）（<a target="_blank" rel="noopener" href="https://www.jetbrains.com/webstorm/download/#section=windows%EF%BC%89">https://www.jetbrains.com/webstorm/download/#section=windows）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">安装Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-install-setup.html">安装git</a></li>
+</ul>
+<h2 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h2><h3 id="Github仓库搭建"><a href="#Github仓库搭建" class="headerlink" title="Github仓库搭建"></a>Github仓库搭建</h3><p>在Github上注册账号后，创建一个新的仓库。注意该仓库名称应为“你的github用户名.github.io”（<em>username.github.io</em>)。<br>根据<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>的说明介绍,此时github的服务器应该已经为你自动生成了一个网址（<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>).<br>不过目前该网址内没有任何内容，所以直接打开的话会显示404.</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/11.png" alt="创建新仓库"></p>
+<p>如果想要使用别的博客搭建方法或自己编写博客网页的话，可以参照<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>中的说明，将仓库拉取到本地，然后自由搭建。 但本文所使用的Hexo搭建方法只要求做完上述一步就ok了。</p>
+<h3 id="安装及部署Hexo"><a href="#安装及部署Hexo" class="headerlink" title="安装及部署Hexo"></a>安装及部署Hexo</h3><p>在你的电脑上随便找一个地方大一点的地方，新建一个文件夹命个名，作为博客本地存储位置。例如本人的博客选址选在F:&#x2F;&#x2F;MyBlog.<br>打开WebStorm，在下方的终端框内，定位到该地址。<code>cd F://Myblog</code></p>
+<p>然后使用Node.js的包管理器npm安装Hexo。输入<code>npm install hexo-cli -g</code>开始安装。装好后，在终端输入<code>hexo -v</code>，若出现一堆版本号，则安装成功。</p>
+<p>接着输入<code>hexo init</code>，创建博客文件夹。输入前一定要保证当前地址所在文件夹为空，否则会报错。创建完成后，当前文件夹内会出现node_modules&#x2F;source&#x2F;themes等许多文件夹。</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/12.png" alt="博客文件夹创建"></p>
+<p>接着输入<code>npm install</code>，安装相关组件；输入<code>hexo server</code>，启动博客服务。点击弹出的链接(<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> )，如一切正常，则应显示以下页面，表明博客创建成功！</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/13.png" alt="博客初始页面"></p>
+<h3 id="将页面推送到Github-Pages"><a href="#将页面推送到Github-Pages" class="headerlink" title="将页面推送到Github Pages"></a>将页面推送到Github Pages</h3><h4 id="设置Git的user-name、和email和SSH"><a href="#设置Git的user-name、和email和SSH" class="headerlink" title="设置Git的user name、和email和SSH"></a>设置Git的user name、和email和SSH</h4><p>在博客所在文件夹上右击，点击Git Bash Here。在弹出的命令行窗口中依次输入<code>git config --global user.name &quot;yourname&quot;</code>和<code>git config --global user.email &quot;youremail&quot;</code>。<br>其中的yourname和youremail是你再github上的用户名和注册邮箱。</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/14.png" alt="Git Bash Here"></p>
+<p>接着输入<code>ssh-keygen -t rsa</code>，连续回车三下（直到所有对话均确认跑完）。然后在默认路径C:\Users\Administrator.ssh下即可发现两个新生成的文件id_rsa和id_rsa.pub。</p>
+<p>登录Github，点击头像下的settings，点击左侧SSH and GPG keys一栏。在右侧输入SSH的名字（随意），然后把id_rsa.pub文件里的内容复制到下面。点击Add SSH key即可。</p>
+<h4 id="推送博客项目"><a href="#推送博客项目" class="headerlink" title="推送博客项目"></a>推送博客项目</h4><p>打开博客文件夹内的_config.yml文件（该文件为博客的配置文件，大多数设置均位于此文件）。设置该文件最下方deploy内的repo后的地址为你在github内刚刚新建的仓库的地址。</p>
+<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/15.png"></p>
+<p>然后安装在git上部署文章的扩展<code>npm install hexo-deployer-git --save</code>。</p>
+<p>在终端框内输入<code>hexo g</code>生成静态文件；再输入<code>hexo d</code>即可部署到Github Pages。</p>
+<p>此时再打开浏览器，输入网址<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a> ，即可查看到你的个人博客界面啦！</p>
+<h3 id="博客文件的新建与推送"><a href="#博客文件的新建与推送" class="headerlink" title="博客文件的新建与推送"></a>博客文件的新建与推送</h3><p>你的博客文件在本地均会存储于.&#x2F;source&#x2F;_posts文件夹内。在终端定位到博客所在文件夹，输入<code>hexo new &quot;Filename&quot;</code>即可创建新博客。创建完成后，可发现_posts文件夹内多出一个.md文件。</p>
+<p>通过上述方式创建的博客在浏览器端直接可见。如果想创建草稿，可输入<code>hexo new draft &quot;Filename&quot;</code>，之后再将其发布。此外还有多种创建方式，详情可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing.html">https://hexo.io/zh-cn/docs/writing.html</a></p>
+<p>所有的博客都将以MarkDown格式书写，可在编辑器内直接编写博客。MarkDown的具体书写方式可参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/806d856cbd4e%E3%80%82">https://www.jianshu.com/p/806d856cbd4e。</a></p>
+<p>另外，Hexo还支持在MarkDown内对文章分类、添加标签等。详情可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">https://hexo.io/zh-cn/docs/front-matter</a></p>
+<p>博客编写好后，可运行<code>hexo server</code>先在本地预览。确认无误后，<code>hexo g</code>+<code>hexo d</code>将其推送到Github Pages上。</p>
+<h3 id="博客主题的更换"><a href="#博客主题的更换" class="headerlink" title="博客主题的更换"></a>博客主题的更换</h3><p>Hexo官网上有许多美观的主题（<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> ），不同的主题应用方式不大一样，具体应用方式应点开对应主题，查看其作者书写的说明文档。</p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/user.png" alt="HarryCarrot">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>HarryCarrot
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2022/08/05/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank">如何搭建个人博客</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>简单地活着, 肆意又精彩.
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/">经验方法</a>
+                        
                     </div>
-                    <div class="tags-dark">
-                        <a href="/tag/SAR/" style="font-size: 12px; color: #666">SAR</a> <a href="/tag/%E5%89%8D%E7%AB%AF/" style="font-size: 12px; color: #666">前端</a> <a href="/tag/%E5%8D%9A%E5%AE%A2/" style="font-size: 12px; color: #666">博客</a> <a href="/tag/%E7%A7%91%E6%99%AE/" style="font-size: 12px; color: #666">科普</a> <a href="/tag/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" style="font-size: 12px; color: #666">高分卫星</a>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端</a>
+                        
+                            <a href="/tag/%E5%8D%9A%E5%AE%A2/">博客</a>
+                        
                     </div>
+                
+                <div class="article-prev-next">
+                    
+                    
+                        <a href="/2022/08/04/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" class="next-prefix">» </a> 下一篇：    <a href="/2022/08/04/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" title="发布于 2022-08-04 09:05">走近高分三号——高分家族唯一的雷达星</a>
+                    
                 </div>
             </div>
+            
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+
+        </div>
     
 </div>
     <div id="footer"></div>
@@ -93,7 +195,7 @@
                     
                         <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
                     
-                        <li class=" active "><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
                         <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
