@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            分类 - 经验方法
+            使用Matlab按某一属性将表格批量连接
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -31,15 +31,38 @@
 <meta name="generator" content="Hexo 6.2.0"></head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">分类归档</h1>
+                <h1 class="header-subtitle">使用Matlab按某一属性将表格批量连接</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2022-10-28
+                        </span>
+                        
+                            <span id="/2022/10/28/使用Matlab按某一属性将表格批量连接/" class="leancloud_visitors" data-flag-title="使用Matlab按某一属性将表格批量连接">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2022/10/28/使用Matlab按某一属性将表格批量连接/"></span>
+                        </span>  
+                    </p>
+                    
+                        
+                            <span class="category-color">经验方法</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">数据处理</span>
+                        
+                            <span class="tag-color">Matlab</span>
+                        
+                    
                 </div>
             
         </div>
@@ -48,87 +71,74 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <p>在处理数据时，使用Arcmap或QGIS等软件对图像处理提取出的数据往往对每张图像单独成表，尤其是对多时相数据等，在汇总数据时将会造成很多麻烦。如下图：</p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E9%97%B4%E6%8E%A5%E5%B9%B3%E5%B7%AE%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F/image.72ulhmi2xn00.webp" alt="image"><br>图1 每张图像得出的数据单独成表</p>
+<p>每张表中都有一列用于唯一标识当前行数据的属性（id2），以及相关的统计数据。</p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/matlab%E8%BF%9E%E6%8E%A5%E8%A1%A8%E6%A0%BC/image.53zlall6hh40.webp" alt="image"><br>图2 每张表格中记录的数据</p>
+<p>现在想将当前文件夹中的所有表格的”_mean”统计数据提取到一张表中，并按id2属性进行连接。手动操作过于麻烦，可使用matlab代码实现如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%使用时，第8、18、22行可能需要按需修改</span></span><br><span class="line"><span class="comment">%读取当前目录内文件信息</span></span><br><span class="line">file=dir(<span class="string">&#x27;*.csv&#x27;</span>);</span><br><span class="line">SIZE=<span class="built_in">size</span>(file);</span><br><span class="line">row=SIZE(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%读取id2信息</span></span><br><span class="line">id2=<span class="built_in">readtable</span>(file(<span class="number">1</span>).name);<span class="comment">%不一定是file(1),但要确保该行读取到的文件里的id2是最全的</span></span><br><span class="line">id2=id2.id2;</span><br><span class="line">num=<span class="built_in">size</span>(id2);</span><br><span class="line">Result=<span class="built_in">table</span>(id2);</span><br><span class="line">less=char();<span class="comment">%用于统计id2较少的表都有谁</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:row</span><br><span class="line">    value=<span class="built_in">zeros</span>(num(<span class="number">1</span>),<span class="number">1</span>);</span><br><span class="line">    NAME=file(<span class="built_in">i</span>).name;</span><br><span class="line">    FILE=<span class="built_in">readtable</span>(file(<span class="built_in">i</span>).name);</span><br><span class="line">    <span class="keyword">if</span> sum(<span class="built_in">ismember</span>(id2,FILE.id2))==num(<span class="number">1</span>)</span><br><span class="line">        value=FILE.x_mean;<span class="comment">%确定要拼接的列名，第22行也是</span></span><br><span class="line">        Result.(NAME(<span class="number">1</span>:<span class="keyword">end</span><span class="number">-4</span>))=value;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        local=<span class="built_in">ismember</span>(id2,FILE.id2);<span class="comment">%在id2较少的情况下，匹配id2信息</span></span><br><span class="line">        value(local)=FILE.x_mean;<span class="comment">%将匹配到的id2读取到正确位置</span></span><br><span class="line">        Result.(NAME(<span class="number">1</span>:<span class="keyword">end</span><span class="number">-4</span>))=value;</span><br><span class="line">        less=char(less,file(<span class="built_in">i</span>).name);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%写入文件</span></span><br><span class="line"><span class="built_in">writetable</span>(Result,<span class="string">&#x27;integrate.csv&#x27;</span>);</span><br></pre></td></tr></table></figure>
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/user.png" alt="HarryCarrot">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>HarryCarrot
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2022/10/28/%E4%BD%BF%E7%94%A8Matlab%E6%8C%89%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E5%B0%86%E8%A1%A8%E6%A0%BC%E6%89%B9%E9%87%8F%E8%BF%9E%E6%8E%A5/" target="_blank">使用Matlab按某一属性将表格批量连接</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>简单地活着, 肆意又精彩.
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
                         
-                            当前分类：<span class="category">经验方法</span>
+                            <a href="/category/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/">经验方法</a>
                         
-                    </span>
-                    
-                    
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
                         
-                            <div class="archive-title">
-                                <h2 class="archive-year">2022</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/10/28/%E4%BD%BF%E7%94%A8Matlab%E6%8C%89%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E5%B0%86%E8%A1%A8%E6%A0%BC%E6%89%B9%E9%87%8F%E8%BF%9E%E6%8E%A5/"><span>使用Matlab按某一属性将表格批量连接</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">10-28</span>
-                                </div>
-                            </div>
-                        </div>
+                            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a>
+                        
+                            <a href="/tag/Matlab/">Matlab</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/09/26/VS%E4%B8%ADEigen%EF%BC%88%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E5%B7%A5%E5%85%B7%EF%BC%89%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"><span>VS中Eigen（矩阵运算工具）的配置与使用</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">09-26</span>
-                                </div>
-                            </div>
-                        </div>
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/09/26/VS%E4%B8%ADopencv%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"><span>VS中opencv的配置与使用</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">09-26</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/08/09/%E4%BD%BF%E7%94%A8%E9%97%B4%E6%8E%A5%E5%B9%B3%E5%B7%AE%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%BF%AD%E4%BB%A3%E5%B9%B3%E5%B7%AE%E7%9A%84Matlab%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99/"><span>使用间接平差法进行迭代平差的Matlab程序编写</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">08-09</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/08/06/PIOMAS%E6%B5%B7%E5%86%B0%E5%8E%9A%E5%BA%A6%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"><span>PIOMAS海冰厚度数据处理</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">08-06</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2022/08/05/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span>如何搭建个人博客</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">08-05</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2022/09/26/VS%E4%B8%ADEigen%EF%BC%88%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E5%B7%A5%E5%85%B7%EF%BC%89%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="next-prefix">» </a> 下一篇：    <a href="/2022/09/26/VS%E4%B8%ADEigen%EF%BC%88%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E5%B7%A5%E5%85%B7%EF%BC%89%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="发布于 2022-09-26 05:02">VS中Eigen（矩阵运算工具）的配置与使用</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+
+        </div>
     
 </div>
     <div id="footer"></div>
