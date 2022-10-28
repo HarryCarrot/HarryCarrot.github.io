@@ -84,20 +84,20 @@
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-install-setup.html">安装git</a></li>
 </ul>
 <h2 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h2><h3 id="Github仓库搭建"><a href="#Github仓库搭建" class="headerlink" title="Github仓库搭建"></a>Github仓库搭建</h3><p>在Github上注册账号后，创建一个新的仓库。注意该仓库名称应为“你的github用户名.github.io”（<em>username.github.io</em>)。<br>根据<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>的说明介绍,此时github的服务器应该已经为你自动生成了一个网址（<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>).<br>不过目前该网址内没有任何内容，所以直接打开的话会显示404.</p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/11.png" alt="创建新仓库"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/11.161eoz0s2u5c.webp" alt="创建新仓库"></p>
 <p>如果想要使用别的博客搭建方法或自己编写博客网页的话，可以参照<a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a>中的说明，将仓库拉取到本地，然后自由搭建。 但本文所使用的Hexo搭建方法只要求做完上述一步就ok了。</p>
 <h3 id="安装及部署Hexo"><a href="#安装及部署Hexo" class="headerlink" title="安装及部署Hexo"></a>安装及部署Hexo</h3><p>在你的电脑上随便找一个地方大一点的地方，新建一个文件夹命个名，作为博客本地存储位置。例如本人的博客选址选在F:&#x2F;&#x2F;MyBlog.<br>打开WebStorm，在下方的终端框内，定位到该地址。<code>cd F://Myblog</code></p>
 <p>然后使用Node.js的包管理器npm安装Hexo。输入<code>npm install hexo-cli -g</code>开始安装。装好后，在终端输入<code>hexo -v</code>，若出现一堆版本号，则安装成功。</p>
 <p>接着输入<code>hexo init</code>，创建博客文件夹。输入前一定要保证当前地址所在文件夹为空，否则会报错。创建完成后，当前文件夹内会出现node_modules&#x2F;source&#x2F;themes等许多文件夹。各文件夹含义及作用可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup%E3%80%82">https://hexo.io/zh-cn/docs/setup。</a></p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/12.png" alt="博客文件夹创建"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/12.7ib45o1sugw0.webp" alt="博客文件夹创建"></p>
 <p>接着输入<code>npm install</code>，安装相关组件；输入<code>hexo server</code>，启动博客服务。点击弹出的链接(<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> )，如一切正常，则应显示以下页面，表明博客创建成功！</p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/13.png" alt="博客初始页面"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/13.22y3ziw3ndw.webp" alt="博客初始页面"></p>
 <h3 id="将页面推送到Github-Pages"><a href="#将页面推送到Github-Pages" class="headerlink" title="将页面推送到Github Pages"></a>将页面推送到Github Pages</h3><h4 id="设置Git的user-name、和email和SSH"><a href="#设置Git的user-name、和email和SSH" class="headerlink" title="设置Git的user name、和email和SSH"></a>设置Git的user name、和email和SSH</h4><p>在博客所在文件夹上右击，点击Git Bash Here。在弹出的命令行窗口中依次输入<code>git config --global user.name &quot;yourname&quot;</code>和<code>git config --global user.email &quot;youremail&quot;</code>。<br>其中的yourname和youremail是你再github上的用户名和注册邮箱。</p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/14.png" alt="Git Bash Here"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/14.2j7oxgsjua00.webp" alt="Git Bash Here"></p>
 <p>接着输入<code>ssh-keygen -t rsa</code>，连续回车三下（直到所有对话均确认跑完）。然后在默认路径C:\Users\Administrator.ssh下即可发现两个新生成的文件id_rsa和id_rsa.pub。</p>
 <p>登录Github，点击头像下的settings，点击左侧SSH and GPG keys一栏。在右侧输入SSH的名字（随意），然后把id_rsa.pub文件里的内容复制到下面。点击Add SSH key即可。</p>
 <h4 id="推送博客项目"><a href="#推送博客项目" class="headerlink" title="推送博客项目"></a>推送博客项目</h4><p>打开博客文件夹内的_config.yml文件（该文件为博客的配置文件，大多数设置均位于此文件）。设置该文件最下方deploy内的repo后的地址为你在github内刚刚新建的仓库的地址。</p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/15.png"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/15.q0e51lp5h9.webp"></p>
 <p>然后安装在git上部署文章的扩展<code>npm install hexo-deployer-git --save</code>。</p>
 <p>在终端框内输入<code>hexo g</code>生成静态文件；再输入<code>hexo d</code>即可部署到Github Pages。</p>
 <p>此时再打开浏览器，输入网址<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a> ，即可查看到你的个人博客界面啦！</p>
@@ -106,7 +106,8 @@
 <p>所有的博客都将以MarkDown格式书写，可在编辑器内直接编写博客。MarkDown的具体书写方式可参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/806d856cbd4e%E3%80%82">https://www.jianshu.com/p/806d856cbd4e。</a></p>
 <p>另外，Hexo还支持在MarkDown内对文章分类、添加标签等。详情可见<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">https://hexo.io/zh-cn/docs/front-matter</a></p>
 <p>经过尝试，若想在博客的MarkDown中插入图片，图片链接只能使用网络链接。本地的链接在被推送到Github Pages之后会地址丢失。本人将图片存储在Github仓库内，使用时调取图片网络地址。最后提一句，仓库文件夹命名最好用英文，用中文会像下面一样很难受：</p>
-<p><img src="https://raw.githubusercontent.com/HarryCarrot/ArticlePic/main/%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/16.png"></p>
+<p><img src="https://cdn.staticaly.com/gh/HarryCarrot/article_picture@master/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%B3%95/16.3xj8e9zp0bu0.webp"></p>
+<p>后来觉得太麻烦了，所以目前本人已使用PicX作为图床，简单便捷又好用。它也是将图片上传到github存仓库内，但会自动为图片生成哈希码，不用担心命名问题，而且便于管理。详情见<a target="_blank" rel="noopener" href="https://picx-docs.xpoet.cn/">https://picx-docs.xpoet.cn/</a></p>
 <p>博客编写好后，可运行<code>hexo server</code>先在本地预览。确认无误后，<code>hexo g</code>+<code>hexo d</code>将其推送到Github Pages上。</p>
 <h3 id="博客主题的更换"><a href="#博客主题的更换" class="headerlink" title="博客主题的更换"></a>博客主题的更换</h3><p>Hexo官网上有许多美观的主题（<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> ），不同的主题应用方式不大一样，具体应用方式应点开对应主题，查看其作者书写的说明文档。</p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>当然，由于本方法搭建的博客使用的服务为Github Pages，其服务器在国外，故在不能科学上网的情况下访问速度较慢。后续可能会尝试解决这个问题。</p>
@@ -166,7 +167,7 @@
                         <br>
                     
                     
-                        <a href="/2022/08/04/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" class="next-prefix">» </a> 下一篇：    <a href="/2022/08/04/%E9%AB%98%E5%88%86%E5%8D%AB%E6%98%9F/" title="发布于 2022-08-04 09:05">走近高分三号——高分家族唯一的雷达星</a>
+                        <a href="/2022/08/04/hello-world/" class="next-prefix">» </a> 下一篇：    <a href="/2022/08/04/hello-world/" title="发布于 2022-08-04 11:41">Hello World</a>
                     
                 </div>
             </div>
